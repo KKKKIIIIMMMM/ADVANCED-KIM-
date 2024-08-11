@@ -37,7 +37,6 @@ class SecondViewController: UIViewController {
         
         // 책 설명 텍스트뷰
         let descriptionTextView = UITextView()
-        
         descriptionTextView.text = """
         인간은 변할 수 있고, 누구나 행복해 질 수 있다. 단 그러기 위해서는 '용기' 가 필요하다고 말한 철학자가 있다. 바로 프로이트, 용과 함께 '심리학의 3대 거장' 으로 일컬어지고 있는 알프레드 아들러다. [미움받을 용기]는 아들러 심리학에 관한 일본의 1인자 철학자 기시미 이치로와 베스트셀러 작가인 고가 후미타케의 저서로, 아들러의 심리학을 '대화체'로 쉽고 맛깔나게 정리하고 있다. 아들러의 심리학을 '대화체' 로 쉽고 맛깔나게 정리하고 있다. 아들러 심리학을 공부한 철학자와 세상에 부정적이고 열등감 많은
 """
@@ -62,27 +61,25 @@ class SecondViewController: UIViewController {
         closeButton.backgroundColor = .gray
         closeButton.layer.cornerRadius = 10
         closeButton.addTarget(self, action: #selector(xbutton) , for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
         
-        // 스택뷰 설정2
+        // 스택뷰 설정
         let stackViewfirst = UIStackView(arrangedSubviews: [closeButton,addButton])
         stackViewfirst.axis = .horizontal
         stackViewfirst.spacing = 10
         stackViewfirst.alignment = .center
-        // 스택뷰 설정1
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, authorLabel, coverImageView, priceLabel, descriptionTextView,])
+        stackViewfirst.translatesAutoresizingMaskIntoConstraints = false
+        
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, authorLabel, coverImageView,priceLabel,descriptionTextView,])
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.alignment = .center
-        
-        
-        
-        // 스택뷰 레이아웃 설정
-        stackViewfirst.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(stackView)
         view.addSubview(stackViewfirst)
         view.backgroundColor = .white
-        
+            
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -100,16 +97,12 @@ class SecondViewController: UIViewController {
             stackViewfirst.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             stackViewfirst.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:0 ),
             stackViewfirst.heightAnchor.constraint(equalToConstant: 100),
-            
         ])
-        
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
     }
-
-    @objc func xbutton() {
-        dismiss(animated: true)
+            @objc func xbutton() {
+            dismiss(animated: true)
     }
-    @objc func showBookAddedAlert() {
+            @objc func showBookAddedAlert() {
             let alert = UIAlertController(title: "알림", message: "책 담기 완료!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
@@ -122,6 +115,72 @@ class SecondViewController: UIViewController {
         
         
      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

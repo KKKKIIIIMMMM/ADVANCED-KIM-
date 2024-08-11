@@ -37,7 +37,6 @@ class ThirdviewController: UIViewController {
         let addButton = UIButton(type: .system)
         addButton.setTitle("추가", for: .normal)
         addButton.setTitleColor(.green, for: .normal)
-//        addButton.addTarget(self, action: #selector(clickadd) , for: .touchUpInside)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addButton)
         
@@ -77,7 +76,6 @@ class ThirdviewController: UIViewController {
             } else {
                 bookView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
             }
-            
             previousView = bookView
         }
     }
@@ -114,13 +112,11 @@ class ThirdviewController: UIViewController {
             priceLabel.trailingAnchor.constraint(equalTo: bookView.trailingAnchor, constant: -10),
             priceLabel.centerYAnchor.constraint(equalTo: bookView.centerYAnchor)
         ])
-        
-        return bookView
+            return bookView
     }
     
     func setupTabButtons() {
         let searchTabButton = UIButton(type: .system)
-//        searchTabButton.addTarget(self, action: #selector(presentthirdViewController) , for: .touchUpInside)
         searchTabButton.setTitle("검색 탭", for: .normal)
         searchTabButton.setTitleColor(.black, for: .normal)
         searchTabButton.layer.borderWidth = 2
@@ -149,7 +145,36 @@ class ThirdviewController: UIViewController {
     }
     @objc func presentthirdViewController() {
         dismiss(animated: true)
+    }
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+
         
         
         
@@ -178,9 +203,6 @@ class ThirdviewController: UIViewController {
 //        let MainViewController = MainViewController()
 //        MainViewController.modalPresentationStyle = .fullScreen // 전체 화면으로 표시
 //        present(MainViewController, animated: true, completion: nil)
-    }
-
-
 
 //import UIKit
 //
@@ -296,11 +318,6 @@ class ThirdviewController: UIViewController {
 //        ])
 //    }
 //}
-
-
-
-
-
 
 //import UIKit
 //

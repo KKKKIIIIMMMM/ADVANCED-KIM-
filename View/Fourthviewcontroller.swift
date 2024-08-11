@@ -14,7 +14,6 @@ class Fourthviewcontroller: UIViewController {
     let contentView = UIView()
     
     // 샘플 책 페이지 이미지 배열 (각 이미지가 책의 한 페이지를 나타냅니다)
-
     
     struct test{
         var Imagetest: String
@@ -71,7 +70,7 @@ class Fourthviewcontroller: UIViewController {
             scrollView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(scrollView)
             
-            // Scroll View constraints
+            
             NSLayoutConstraint.activate([
                 scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -108,7 +107,6 @@ class Fourthviewcontroller: UIViewController {
                 testtext.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
                 testtext.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: 0),
                 testtext.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 300),
-//              testtext.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 50)
             ])
                 
             let pageImageView = UIImageView()
@@ -138,6 +136,30 @@ class Fourthviewcontroller: UIViewController {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
