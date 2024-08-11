@@ -79,34 +79,46 @@ class SecondViewController: UIViewController {
         view.addSubview(stackView)
         view.addSubview(stackViewfirst)
         view.backgroundColor = .white
-            
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            coverImageView.widthAnchor.constraint(equalToConstant: 200),
-            coverImageView.heightAnchor.constraint(equalToConstant: 300),
-            addButton.widthAnchor.constraint(equalToConstant: 225),
-            addButton.heightAnchor.constraint(equalToConstant: 60),
-            closeButton.widthAnchor.constraint(equalToConstant: 50),
-            closeButton.heightAnchor.constraint(equalToConstant: 50),
-            descriptionTextView.widthAnchor.constraint(equalToConstant: 200),
-            descriptionTextView.heightAnchor.constraint(equalToConstant: 250),
-            stackViewfirst.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-            stackViewfirst.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            stackViewfirst.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:0 ),
-            stackViewfirst.heightAnchor.constraint(equalToConstant: 100),
-        ])
-    }
-            @objc func xbutton() {
-            dismiss(animated: true)
-    }
-            @objc func showBookAddedAlert() {
-            let alert = UIAlertController(title: "알림", message: "책 담기 완료!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+        
+        // SnapKit constraints
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview().offset(50)
+            make.bottom.equalTo(stackViewfirst.snp.top).offset(-10)
         }
+        
+        coverImageView.snp.makeConstraints { make in
+            make.width.equalTo(200)
+            make.height.equalTo(300)
+        }
+        
+        descriptionTextView.snp.makeConstraints { make in
+            make.width.equalTo(200)
+            make.height.equalTo(250)
+        }
+        
+        stackViewfirst.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().inset(0)
+            make.height.equalTo(100)
+        }
+        
+        closeButton.snp.makeConstraints { make in
+            make.width.height.equalTo(50)
+        }
+        
+        addButton.snp.makeConstraints { make in
+            make.width.equalTo(225)
+            make.height.equalTo(60)
+        }
+    }
+        @objc func xbutton() {
+        dismiss(animated: true)
+    }
+        @objc func showBookAddedAlert() {
+        let alert = UIAlertController(title: "알림", message: "책 담기 완료!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
         
         
