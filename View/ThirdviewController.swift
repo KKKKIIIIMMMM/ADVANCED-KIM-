@@ -40,17 +40,22 @@ class ThirdviewController: UIViewController {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addButton)
         
-        NSLayoutConstraint.activate([
-            deleteAllButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            deleteAllButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: deleteAllButton.centerYAnchor),
-            
-            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            addButton.centerYAnchor.constraint(equalTo: deleteAllButton.centerYAnchor)
-        ])
-    }
+        // SnapKit constraints
+               deleteAllButton.snp.makeConstraints { make in
+                   make.leading.equalToSuperview().offset(20)
+                   make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+               }
+               
+               titleLabel.snp.makeConstraints { make in
+                   make.centerX.equalToSuperview()
+                   make.centerY.equalTo(deleteAllButton.snp.centerY)
+               }
+               
+               addButton.snp.makeConstraints { make in
+                   make.trailing.equalToSuperview().offset(-20)
+                   make.centerY.equalTo(deleteAllButton.snp.centerY)
+               }
+           }
     
     func setupBookViews() {
         let bookInfo = [
@@ -65,18 +70,17 @@ class ThirdviewController: UIViewController {
             let bookView = createBookView(title: info.0, author: info.1, price: info.2)
             view.addSubview(bookView)
             
-            NSLayoutConstraint.activate([
-                bookView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                bookView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                bookView.heightAnchor.constraint(equalToConstant: 50)
-            ])
-            
-            if let previousView = previousView {
-                bookView.topAnchor.constraint(equalTo: previousView.bottomAnchor, constant: 10).isActive = true
-            } else {
-                bookView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
+            bookView.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(20)
+                make.height.equalTo(50)
+                
+                if let previousView = previousView {
+                    bookView.topAnchor.constraint(equalTo: previousView.bottomAnchor, constant: 10).isActive = true
+                } else {
+                    bookView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
+                }
+                previousView = bookView
             }
-            previousView = bookView
         }
     }
     
@@ -102,18 +106,23 @@ class ThirdviewController: UIViewController {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         bookView.addSubview(priceLabel)
         
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: bookView.leadingAnchor, constant: 10),
-            titleLabel.centerYAnchor.constraint(equalTo: bookView.centerYAnchor),
-            
-            authorLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 10),
-            authorLabel.centerYAnchor.constraint(equalTo: bookView.centerYAnchor),
-            
-            priceLabel.trailingAnchor.constraint(equalTo: bookView.trailingAnchor, constant: -10),
-            priceLabel.centerYAnchor.constraint(equalTo: bookView.centerYAnchor)
-        ])
-            return bookView
-    }
+        titleLabel.snp.makeConstraints { make in
+                   make.leading.equalToSuperview().offset(10)
+                   make.centerY.equalToSuperview()
+               }
+               
+               authorLabel.snp.makeConstraints { make in
+                   make.leading.equalTo(titleLabel.snp.trailing).offset(10)
+                   make.centerY.equalToSuperview()
+               }
+               
+               priceLabel.snp.makeConstraints { make in
+                   make.trailing.equalToSuperview().offset(-10)
+                   make.centerY.equalToSuperview()
+               }
+               
+               return bookView
+           }
     
     func setupTabButtons() {
         let searchTabButton = UIButton(type: .system)
@@ -130,19 +139,21 @@ class ThirdviewController: UIViewController {
         savedBooksTabButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(savedBooksTabButton)
         
-        NSLayoutConstraint.activate([
-            searchTabButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchTabButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            searchTabButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
-            searchTabButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            savedBooksTabButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            savedBooksTabButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            savedBooksTabButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
-            savedBooksTabButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-    }
+        // SnapKit constraints for tab buttons
+               searchTabButton.snp.makeConstraints { make in
+                   make.leading.equalToSuperview()
+                   make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                   make.width.equalTo(view.snp.width).multipliedBy(0.5)
+                   make.height.equalTo(50)
+               }
+               
+               savedBooksTabButton.snp.makeConstraints { make in
+                   make.trailing.equalToSuperview()
+                   make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                   make.width.equalTo(view.snp.width).multipliedBy(0.5)
+                   make.height.equalTo(50)
+               }
+           }
     @objc func presentthirdViewController() {
         dismiss(animated: true)
     }
