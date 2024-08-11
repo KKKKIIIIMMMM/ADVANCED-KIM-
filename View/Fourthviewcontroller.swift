@@ -32,6 +32,7 @@ class Fourthviewcontroller: UIViewController {
         test(Imagetest: "책을펼치다", Explanation:"설명입니다."),
         test(Imagetest: "책을펼치다", Explanation:"설명입니다."),
         test(Imagetest: "책을펼치다", Explanation:"설명입니다."),
+        test(Imagetest: "책을펼치다", Explanation:"설명입니다."),
         test(Imagetest: "책을펼치다", Explanation:"설명입니다.")
     ]
     
